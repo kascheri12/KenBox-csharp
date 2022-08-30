@@ -1,0 +1,88 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="p-4">
+    <p class="p-2">
+        <span class="fs-2 fw-bold">This exmaple illistrates how much faster it is to count the number of children in the KenBox Example using the iterative vs the recursive methods.</span>
+    </p>
+    <p class="p-2">
+        <span class="fs-2 fw-bold">@ViewBag.PercFaster% faster</span>
+    </p>
+    <p class="p-2">
+        <table class="table fs-2">
+            <thead>
+                <tr>
+                    <th scope="col"></th>
+                    <th scope="col">Recursive</th>
+                    <th scope="col">Iterative</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">Number of children</th>
+                    <td>@ViewBag.CountRecur</td>
+                    <td>@ViewBag.CountIter</td>
+                </tr>
+                <tr>
+                    <th scope="row">Execution time</th>
+                    <td>@ViewBag.TicksRecur</td>
+                    <td>@ViewBag.TicksIter</td>
+                </tr>
+            </tbody>
+        </table>
+    </p>
+    <p class="p-2">
+        <table class="table table-borderless fs-5">
+            <thead>
+                <tr>
+                    <th scope="col">Recursive</th>
+                    <th scope="col">Iterative</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <pre>
+public int getNumberOfChildBoxesRecurse(KenBox box)
+{
+    if (box.containedBox is KenBox)
+    {
+        return getNumberOfChildBoxesRecurse(box) + 1;
+    }
+    return 0;
+}
+
+public int NumberOfContainedBoxesRecursive
+{
+    get
+    {
+        return getNumberOfChildBoxesRecurse(this);
+    }
+}
+            </pre>
+                    </td>
+                    <td>
+                        <pre>
+public int NumberOfContainedBoxesIterative
+{
+    get
+    {
+        int i = 0;
+        KenBox child = this.containedBox;
+        while (child is KenBox)
+        {
+            i++;
+            if (child.containedBox is KenBox) { child = child.containedBox;  }
+            else { child = null; }
+        }
+        return i;
+    }
+}
+            </pre>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </p>
+</div>
