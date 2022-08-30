@@ -9,4 +9,4 @@ Problem: Return the number of children any one KenBox has contained within.
 Sample Execution Output: 
 ![alt text][gif]
 
-[gif]: Kenbox-csharp_ScreenRecording.gif "KenBox-csharp GIF"
+[gif]: KenBox-csharp_ScreenRecording.gif "KenBox-csharp GIF"
